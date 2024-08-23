@@ -11,6 +11,7 @@
 
     varying vec2 vScrollLeft;
     varying vec2 vScrollRight;
+    varying vec2 vTextureCoord;
 
     uniform float time;
   
@@ -19,6 +20,7 @@
 
       vScrollLeft = aTextureCoord + vec2(time, time);
       vScrollRight = aTextureCoord + vec2(-time, time) + 0.2;
+      vTextureCoord = aTextureCoord;
     }
 </script>
 
@@ -29,6 +31,7 @@
 
     varying vec2 vScrollLeft;
     varying vec2 vScrollRight;
+    varying vec2 vTextureCoord;
   
     uniform vec4 uGlobalColor;
     uniform sampler2D texture0;
@@ -52,6 +55,13 @@
         } else {
             water = baseColor;
         }
+
+        float randomIntensity = fract(10000.0 * sin(vTextureCoord.x + vScrollLeft.y * 8000.0));
+        randomIntensity -= 0.5;
+        water.rb += 0.4 * randomIntensity;
+        randomIntensity = fract(10000.0 * sin(vTextureCoord.x + vScrollRight.y * 6000.0));
+        randomIntensity -= 0.5;
+        water.g += 0.1 * randomIntensity;
 
         gl_FragColor = water;
     }
@@ -121,12 +131,13 @@
 <body>
     <div class="overtop">
         <h1>Zoe Johnston</h1>
-        <p>I'm hosted with GitHub Pages.</p>
     </div>
 
-    <canvas id="glcanvas" width="800" height="560">
+    <canvas id="glcanvas" width="800" height="260">
         Oh no! Your browser doesn't support canvas!
     </canvas>
+
+    <p>I'm hosted with GitHub Pages.</p>
 </body>
 
 </html>

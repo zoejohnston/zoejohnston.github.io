@@ -112,7 +112,7 @@ function compileShader(id, type) {
 
 function initTextures(gl) {
     textureArray.push({}) ;
-    loadFileTexture(gl, textureArray[0], "water2.png");
+    loadFileTexture(gl, textureArray[0], "water.png");
     
     textureArray.push({}) ;
     loadFileTexture(gl, textureArray[1], "perlin_noise.png");
