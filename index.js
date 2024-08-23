@@ -67,7 +67,7 @@ function startup() {
     gl.bindBuffer(gl.ARRAY_BUFFER, textureCoordBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(textureCoordinates), gl.STATIC_DRAW);
 
-    initTextures();
+    initTextures(gl);
     animateScene();
 }
 
@@ -110,14 +110,17 @@ function compileShader(id, type) {
     return shader;
 }
 
-function initTextures() {
+function initTextures(gl) {
+    gl.useProgram(shaderProgram)
+
     textureArray.push({}) ;
-    loadFileTexture(textureArray[0], "perlin_noise.png");
+    loadFileTexture(gl, textureArray[0], "perlin_noise.png");
     
     textureArray.push({}) ;
-    loadFileTexture(textureArray[1], "water.png");
+    loadFileTexture(gl, textureArray[1], "water.png");
 
     waitForTextures(textureArray);
+
 // Gets a noise texture (image source: https://commons.wikimedia.org/wiki/File:Perlin_noise_example.png)
     gl.activeTexture(gl.TEXTURE0);
 	gl.bindTexture(gl.TEXTURE_2D, textureArray[0].textureWebGL);
@@ -151,15 +154,15 @@ function waitForTextures(texs) {
 	5) ;
 }
 
-function loadFileTexture(tex, filename) {
+function loadFileTexture(gl, tex, filename) {
     tex.textureWebGL  = gl.createTexture();
     tex.image = new Image();
     tex.image.src = filename ;
     tex.isTextureReady = false ;
-    tex.image.onload = function() { handleTextureLoaded(tex); }
+    tex.image.onload = function() { handleTextureLoaded(gl, tex); }
 }
 
-function handleTextureLoaded(textureObj) {
+function handleTextureLoaded(gl, textureObj) {
     gl.bindTexture(gl.TEXTURE_2D, textureObj.textureWebGL);
 	gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true); // otherwise the image would be flipped upsdide down
 
