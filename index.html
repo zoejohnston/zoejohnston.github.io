@@ -72,6 +72,12 @@
 <script src="index.js" type="module"></script>
 
 <style>
+    @font-face {
+    font-family: 'gladifiltheftegladifilthefte';
+    src: url('Gladifilthefte-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    }
     div.overtop {
         position: absolute; 
         left: 0; 
@@ -84,19 +90,47 @@
         width: 800px;
         margin: auto;
     }
+    div.main {
+        width: 800px;
+        margin: auto;
+        text-align: center;
+    }
     body {
         background-color: #fef9c2;
         font-family:'trebuchet ms';
-        font-size: 20px;
+        font-size: 16px;
     }
-    h1 {
+    div.overtop>h1 {
         text-align: center;
         color:#fc98a4;
         font-size: 80px;
+        text-shadow: #fc98a4 1px 0 10px;
+    }
+    h1 {
+        text-align: left;
+        color:#fc98a4;
+        font-size: 40px;
+    }
+    div.row>h2 {
+        font-weight: normal;
+        float: left;
+        width: 33.33%;
+        font-size: 20px;
+        color:#a59f62;
+        padding-bottom: 30px;
+    }
+    h2.column1 {
+        text-align: left;
+    }
+    h2.column2 {
+        text-align: center;
+    }
+    h2.column3 {
+        text-align: right;
     }
     p {
-        color:#fef9c2;
-        color:#fc98a4;
+        text-align: left;
+        color:#a59f62;
     }
     canvas {
         border-radius: 25px;
@@ -117,16 +151,19 @@
     li a:hover {
         color: #b1e1a3;
     }
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
 
 </style>
 
 <header>
-    <div class="list">
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html">Projects</a></li>
-        <li><a href="index.html">Contact</a></li>
-    </ul>
+    <div class="row">
+        <h2 class="column1">PORTFOLIO<br>ZOE JOHNSTON</h2>
+        <h2 class="column2">SUMMER 2024</h2>
+        <h2 class="column3">COMPUTER SCIENCE GRADUATE<br>AND COOL PERSON</h2>
     </div>
 </header>
 
@@ -139,7 +176,11 @@
         Oh no! Your browser doesn't support canvas!
     </canvas>
 
-    <p>I'm hosted with GitHub Pages.</p>
+    <div class="main">
+        <h1>Projects</h1>
+        <p>i'm just a girl!! please hire me i for real need a job
+        </p>
+    </div>
 </body>
 
 </html>
