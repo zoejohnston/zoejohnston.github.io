@@ -2,6 +2,10 @@
 <html>
 
 <script id="vertex-shader" type="x-shader/x-vertex">
+    #ifdef GL_ES
+      precision highp float;
+    #endif
+
     attribute vec2 aVertexPosition;
     attribute vec2 aTextureCoord;
 
@@ -13,8 +17,8 @@
     void main() {
       gl_Position = vec4(aVertexPosition, 0.0, 1.0);
 
-      vScrollLeft = aTextureCoord;// + vec2(time, time);
-      vScrollRight = aTextureCoord;// + vec2(-time, time) + 0.2;
+      vScrollLeft = aTextureCoord + vec2(time, time);
+      vScrollRight = aTextureCoord + vec2(-time, time) + 0.2;
     }
 </script>
 
@@ -31,7 +35,24 @@
     uniform sampler2D texture1;
   
     void main() {
-        vec4 baseColor = texture2D(texture0, vScrollLeft);
+        vec4 displacementMap = texture2D(texture1, vScrollLeft);
+        vec4 baseColor = texture2D(texture0, vScrollRight + 0.2 * (displacementMap.r - 0.5));
+        
+        vec4 leftNoise = texture2D(texture1, vScrollLeft);
+        vec4 rightNoise = texture2D(texture1, vScrollRight);
+        vec4 waterHighlights = mix(leftNoise, rightNoise, 0.5);
+
+        vec4 water;
+        if (waterHighlights.r < 0.45) {
+            water = baseColor + 0.2 * vec4(0.93, 0.78, 0.38, 0.0);
+
+        } else if (waterHighlights.r > 0.66) {
+            water = baseColor + 0.5 * vec4(0.93, 0.78, 0.38, 0.0);
+
+        } else {
+            water = baseColor;
+        }
+
         gl_FragColor = baseColor;
     }
 </script>

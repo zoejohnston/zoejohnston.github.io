@@ -21,7 +21,7 @@ let vertexCount;
 
 let uScalingFactor;
 let uGlobalColor;
-let uRotationVector;
+let uTime;
 let aVertexPosition;
 let aTextureCoord;
 
@@ -112,23 +112,20 @@ function compileShader(id, type) {
 
 function initTextures() {
     textureArray.push({}) ;
-    loadFileTexture(textureArray[textureArray.length-1], "water.png");
+    loadFileTexture(textureArray[0], "perlin_noise.png");
     
     textureArray.push({}) ;
-    loadFileTexture(textureArray[textureArray.length-1], "perlin_noise.png");
+    loadFileTexture(textureArray[1], "water.png");
 
     waitForTextures(textureArray);
-
+// Gets a noise texture (image source: https://commons.wikimedia.org/wiki/File:Perlin_noise_example.png)
     gl.activeTexture(gl.TEXTURE0);
 	gl.bindTexture(gl.TEXTURE_2D, textureArray[0].textureWebGL);
 	gl.uniform1i(gl.getUniformLocation(shaderProgram, "texture0"), 0);
-	
-    // Gets a noise texture (image source: https://commons.wikimedia.org/wiki/File:Perlin_noise_example.png)
+    
 	gl.activeTexture(gl.TEXTURE1);
 	gl.bindTexture(gl.TEXTURE_2D, textureArray[1].textureWebGL);
 	gl.uniform1i(gl.getUniformLocation(shaderProgram, "texture1"), 1);
-
-    //gl.uniform1f(gl.getUniformLocation(shaderProgram, "time"), currentTime);
 }
 
 function waitForTextures(texs) {
@@ -171,7 +168,7 @@ function handleTextureLoaded(textureObj) {
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST_MIPMAP_NEAREST);
 
-    //gl.generateMipmap(gl.TEXTURE_2D);
+    gl.generateMipmap(gl.TEXTURE_2D);
 	
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT); //Prevents s-coordinate wrapping (repeating)
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT); //Prevents t-coordinate wrapping (repeating)
@@ -190,6 +187,8 @@ function animateScene() {
   
     uGlobalColor = gl.getUniformLocation(shaderProgram, "uGlobalColor");
     gl.uniform4fv(uGlobalColor, [0.1, 0.7, 0.2, 1.0]);
+
+    uTime = gl.getUniformLocation(shaderProgram, "time");
   
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
   
@@ -220,7 +219,8 @@ function animateScene() {
     gl.drawArrays(gl.TRIANGLES, 0, vertexCount);
   
     requestAnimationFrame((currentTime) => {
-      previousTime = currentTime;
-      animateScene();
+        gl.uniform1f(uTime, 0.0001*currentTime);
+        previousTime = currentTime;
+        animateScene();
     });
 }
