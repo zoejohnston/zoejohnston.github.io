@@ -60,10 +60,9 @@
 <script src="index.js" type="module"></script>
 
 <style>
-    header {
-        color:#fef9c2;
-        background: #b1e1a3;
-        border-radius: 25px;
+    div {
+        position: absolute;
+        transform: translate(100%, 100%);
     }
     body {
       background-color: #fef9c2;
@@ -71,28 +70,38 @@
     h1 {
         text-align: center;
         color:#fc98a4;
-        font-family:'Courier New';
+        font-family:'trebuchet ms';
     }
     p {
         color:#fef9c2;
-        font-family:'Courier New';
+        font-family:'trebuchet ms';
         color:#fc98a4;
     }
+    canvas {
+        border-radius: 25px;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }   
 </style>
 
 <header>
-    <h1>A heading here</h1>
-    <p>Posted by John Doe</p>
-    <p>Some additional information here</p>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+    </ul>
+</header>
+
+<body>
+    <div>
+        <h1>Hello World</h1>
+        <p>I'm hosted with GitHub Pages.</p>
+    </div>
 
     <canvas id="glcanvas" width="600" height="460">
         Oh no! Your browser doesn't support canvas!
     </canvas>
-</header>
-
-<body>
-    <h1>Hello World</h1>
-    <p>I'm hosted with GitHub Pages.</p>
 </body>
 
 </html>
