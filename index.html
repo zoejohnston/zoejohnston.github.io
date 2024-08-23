@@ -60,11 +60,16 @@
 <script src="index.js" type="module"></script>
 
 <style>
-    div {
-        position: absolute;
-        margin-left: auto;
-        margin-right: auto;
+    div.overtop {
+        position: absolute; 
+        left: 0; 
+        right: 0; 
+        margin-left: auto; 
+        margin-right: auto; 
         width: 600px;
+    }
+    div.list {
+        text-align: center;
     }
     body {
         background-color: #fef9c2;
@@ -97,23 +102,30 @@
     li a {
         color: #fc98a4;
         padding: 14px 16px;
+        text-decoration: none; 
     }
     li a:hover {
         color: #b1e1a3;
+    }
+    li a:active {
+        color: #b1e1a3;
+        text-decoration: green wavy underline;
     }
 
 </style>
 
 <header>
+    <div class="list">
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="index.html">Home</a></li>
         <li><a href="index.html">Home</a></li>
     </ul>
+    </div>
 </header>
 
 <body>
-    <div>
+    <div class="overtop">
         <h1>Hello World</h1>
         <p>I'm hosted with GitHub Pages.</p>
     </div>
