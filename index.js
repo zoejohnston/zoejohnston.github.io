@@ -145,7 +145,7 @@ function waitForTextures(texs) {
                else
                {
                		console.log("ready to render") ;
-					render(0);
+                    animateScene();
                }
 		},
 	5) ;
