@@ -111,24 +111,13 @@ function compileShader(id, type) {
 }
 
 function initTextures(gl) {
-    gl.useProgram(shaderProgram)
-
     textureArray.push({}) ;
-    loadFileTexture(gl, textureArray[0], "perlin_noise.png");
+    loadFileTexture(gl, textureArray[0], "water.png");
     
     textureArray.push({}) ;
-    loadFileTexture(gl, textureArray[1], "water.png");
+    loadFileTexture(gl, textureArray[1], "perlin_noise.png");
 
     waitForTextures(textureArray);
-
-// Gets a noise texture (image source: https://commons.wikimedia.org/wiki/File:Perlin_noise_example.png)
-    gl.activeTexture(gl.TEXTURE0);
-	gl.bindTexture(gl.TEXTURE_2D, textureArray[0].textureWebGL);
-	gl.uniform1i(gl.getUniformLocation(shaderProgram, "texture0"), 0);
-    
-	gl.activeTexture(gl.TEXTURE1);
-	gl.bindTexture(gl.TEXTURE_2D, textureArray[1].textureWebGL);
-	gl.uniform1i(gl.getUniformLocation(shaderProgram, "texture1"), 1);
 }
 
 function waitForTextures(texs) {
@@ -187,6 +176,15 @@ function animateScene() {
     gl.clear(gl.COLOR_BUFFER_BIT);
   
     gl.useProgram(shaderProgram);
+
+    // Gets a noise texture (image source: https://commons.wikimedia.org/wiki/File:Perlin_noise_example.png)
+    gl.activeTexture(gl.TEXTURE0);
+    gl.bindTexture(gl.TEXTURE_2D, textureArray[0].textureWebGL);
+    gl.uniform1i(gl.getUniformLocation(shaderProgram, "texture0"), 0);
+
+    gl.activeTexture(gl.TEXTURE1);
+    gl.bindTexture(gl.TEXTURE_2D, textureArray[1].textureWebGL);
+    gl.uniform1i(gl.getUniformLocation(shaderProgram, "texture1"), 1);
   
     uGlobalColor = gl.getUniformLocation(shaderProgram, "uGlobalColor");
     gl.uniform4fv(uGlobalColor, [0.1, 0.7, 0.2, 1.0]);
@@ -222,7 +220,7 @@ function animateScene() {
     gl.drawArrays(gl.TRIANGLES, 0, vertexCount);
   
     requestAnimationFrame((currentTime) => {
-        gl.uniform1f(uTime, 0.0001*currentTime);
+        gl.uniform1f(uTime, 0.00008*currentTime);
         previousTime = currentTime;
         animateScene();
     });

@@ -44,10 +44,10 @@
 
         vec4 water;
         if (waterHighlights.r < 0.45) {
-            water = baseColor + 0.2 * vec4(0.93, 0.78, 0.38, 0.0);
+            water = baseColor + 0.1 * vec4(0.93, 0.78, 0.38, 0.0);
 
         } else if (waterHighlights.r > 0.66) {
-            water = baseColor + 0.5 * vec4(0.93, 0.78, 0.38, 0.0);
+            water = baseColor + 0.4 * vec4(0.93, 0.78, 0.38, 0.0);
 
         } else {
             water = baseColor;
@@ -84,15 +84,15 @@
     <h1>A heading here</h1>
     <p>Posted by John Doe</p>
     <p>Some additional information here</p>
+
+    <canvas id="glcanvas" width="600" height="460">
+        Oh no! Your browser doesn't support canvas!
+    </canvas>
 </header>
 
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-
-<canvas id="glcanvas" width="600" height="460">
-    Oh no! Your browser doesn't support canvas!
-</canvas>
-
+    <h1>Hello World</h1>
+    <p>I'm hosted with GitHub Pages.</p>
 </body>
+
 </html>
