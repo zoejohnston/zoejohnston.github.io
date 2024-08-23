@@ -1,14 +1,77 @@
 <!DOCTYPE html>
 <html>
 
+<script id="vertex-shader" type="x-shader/x-vertex">
+    attribute vec2 aVertexPosition;
+    attribute vec2 aTextureCoord;
+
+    varying highp vec2 vScrollLeft;
+    varying highp vec2 vScrollRight;
+
+    uniform float time;
+  
+    void main() {
+      gl_Position = vec4(aVertexPosition, 0.0, 1.0);
+
+      vScrollLeft = aTextureCoord;// + vec2(time, time);
+      vScrollRight = aTextureCoord;// + vec2(-time, time) + 0.2;
+    }
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+    #ifdef GL_ES
+      precision highp float;
+    #endif
+
+    varying highp vec2 vScrollLeft;
+    varying highp vec2 vScrollRight;
+  
+    uniform vec4 uGlobalColor;
+    uniform sampler2D texture0;
+    uniform sampler2D texture1;
+  
+    void main() {
+        //vec4 baseColor = texture(texture0, vScrollLeft);
+        gl_FragColor = uGlobalColor;
+    }
+</script>
+
+<script src="index.js" type="module"></script>
+
 <style>
+    header {
+        color:#fef9c2;
+        background: #b1e1a3;
+        border-radius: 25px;
+    }
     body {
-      background-color: lightgoldenrodyellow;
+      background-color: #fef9c2;
+    }
+    h1 {
+        text-align: center;
+        color:#fc98a4;
+        font-family:'Courier New';
+    }
+    p {
+        color:#fef9c2;
+        font-family:'Courier New';
+        color:#fc98a4;
     }
 </style>
+
+<header>
+    <h1>A heading here</h1>
+    <p>Posted by John Doe</p>
+    <p>Some additional information here</p>
+</header>
 
 <body>
 <h1>Hello World</h1>
 <p>I'm hosted with GitHub Pages.</p>
+
+<canvas id="glcanvas" width="600" height="460">
+    Oh no! Your browser doesn't support canvas!
+</canvas>
+
 </body>
 </html>
