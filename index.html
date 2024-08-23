@@ -31,8 +31,8 @@
     uniform sampler2D texture1;
   
     void main() {
-        vec4 baseColor = texture(texture0, vScrollLeft);
-        gl_FragColor = uGlobalColor;
+        vec4 baseColor = texture2D(texture0, vScrollLeft);
+        gl_FragColor = baseColor;
     }
 </script>
 
