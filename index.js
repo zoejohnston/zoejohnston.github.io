@@ -23,6 +23,7 @@ let uScalingFactor;
 let uGlobalColor;
 let uRotationVector;
 let aVertexPosition;
+let aTextureCoord;
 
 // Animation timing
 
@@ -139,10 +140,9 @@ function waitForTextures(texs) {
                     console.log(texs[i].image.src) ;
                     n = n+texs[i].isTextureReady ;
                }
-               wtime = (new Date()).getTime() ;
                if( n != texs.length )
                {
-               		console.log(wtime + " not ready yet") ;
+               		console.log("not ready yet") ;
                		waitForTextures(texs) ;
                }
                else
