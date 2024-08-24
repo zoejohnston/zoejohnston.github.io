@@ -144,6 +144,7 @@
         font-size: 16px;
         color:#fc98a4;
         font-family: 'Courier New', Courier, monospace;
+        margin-bottom: 0px;
     }
     img.column3 {
         float: left;
@@ -186,16 +187,11 @@
     img {
         border-radius: 25px;
     }
-    li {
-        display: inline;
-        padding: 10px 10px;
-    } 
-    li a {
-        color: #fc98a4;
-        text-decoration: none; 
-    }
-    li a:hover {
+    a {
         color: #b1e1a3;
+    }
+    a:hover {
+        color: #85ba77;
     }
     .row:after {
         content: "";
@@ -207,9 +203,9 @@
 
 <header>
     <div class="row">
-        <h2 class="column1">ZOELISEJOHNSTON@GMAIL.COM<br>LINKEDIN.COM/IN/ZOELISEJOHNSTON</h2>
-        <h2 class="column2">PORTFOLIO</h2>
-        <h2 class="column3">RESUME<br>CV</h2>
+        <h2 class="column1"><br>LINKEDIN.COM/IN/ZOELISEJOHNSTON</h2>
+        <h2 class="column2"><br>PORTFOLIO</h2>
+        <h2 class="column3"><br>ZOELISEJOHNSTON@GMAIL.COM</h2>
     </div>
 </header>
 
@@ -228,6 +224,7 @@
         through some of my work!</p>
         <div class="project">
             <h1>Yarn-Level Cloth Simulation</h1>
+            <a href="https://github.com/zoejohnston/fabricsim">Source Code↗</a>
             <p>Some of the properties of fabric, especially knit fabric, come from the sliding of 
                 inidvidual yarns. Runs are an obvious example of yarn-level movement in woven fabric. 
                 One yarn gets caught and is forced to slide past the yarns that it is woven through, 
