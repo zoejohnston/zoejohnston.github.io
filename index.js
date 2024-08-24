@@ -19,7 +19,6 @@ let vertexCount;
 // Rendering data shared with the
 // scalers.
 
-let uScalingFactor;
 let uGlobalColor;
 let uTime;
 let aVertexPosition;
@@ -28,9 +27,7 @@ let aTextureCoord;
 // Animation timing
 
 let shaderProgram;
-let currentAngle;
 let previousTime = 0.0;
-let degreesPerSecond = 90.0;
 
 var textureArray = [];
 

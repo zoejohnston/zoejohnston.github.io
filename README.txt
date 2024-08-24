@@ -1,1 +1,0 @@
-Image by <a href="https://www.freepik.com/free-vector/realistic-grainy-texture-design_22072327.htm">Freepik</a>
