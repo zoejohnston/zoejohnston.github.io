@@ -128,6 +128,19 @@
         color:#fc98a4;
         font-family: 'Courier New', Courier, monospace;
     }
+    img.column3 {
+        float: left;
+        width: 33.33%;
+        margin-right: 20px;
+    }
+    img.column1 {
+        float: left;
+        margin-right: 20px;
+    }
+    div.project {
+        border-radius: 25px;
+        padding: 5px;
+    }
     h2.column1 {
         text-align: left;
     }
@@ -141,7 +154,7 @@
         text-align: left;
     }
     p.short {
-        width: 500px;
+        width: 600px;
     }
     canvas {
         border-radius: 25px;
@@ -152,6 +165,9 @@
         margin-right: auto;
         display: block;
     }  
+    img {
+        border-radius: 25px;
+    }
     li {
         display: inline;
         padding: 10px 10px;
@@ -189,9 +205,39 @@
     </canvas>
 
     <div class="main">
-        <p class="short">hi, i'm zoe. i'm a recent computer science graduate interested in 
-        computer graphics, animation, low-level programming, and art. have a look
-        through some of my work! i've tried to make it pretty.</p>
+        <p class="short">Hi, I'm Zoe. I'm a recent computer science graduate interested in 
+        computer graphics, animation, low-level programming, and art. Have a look
+        through some of my work!</p>
+        <div class="project">
+            <h1>Yarn-Level Cloth Simulation</h1>
+            <p>Some of the properties of fabric, especially knit fabric, come from the sliding of 
+                inidvidual yarns. Runs are an obvious example of yarn-level movement in woven fabric. 
+                One yarn gets caught and is forced to slide past the yarns that it is woven through, 
+                deforming the fabric in a characteristic way. The question behind this project was: "how 
+                can we go about simulating fabric at this level of detail?". I read a few papers on 
+                the subject, and decided to replicate the technique for simulating woven fabric used by Cirio et al. in a 2014 paper.
+                <br><br>
+                Like many cloth simulation methods, this method uses a particle-based discretization of the farbic.
+                Each yarn crossing is described using a particle with five degrees of freedom. Three degrees of 
+                freedom describe the location of the particle in 3D space and two describe its parametric location
+                along the two yarns that make up the crossing that it describes.
+                Using a force model, we can then update particle coordinates over time. I just used Verlet integratrion 
+                to do this, but more efficient methods exist
+                <br><br>
+                In the pictures below, you can see the resting positions of two sheets of woven farbic. By varying the amount
+                of friction, we get different amounts of sliding.
+            </p>
+            <div class="row">
+                <img class="column3" src="nosliding.png">
+                <img class="column3" src="sliding.png">
+            </div>
+            <p>As I mentioned before, runs are a great example of yarn level movement! To create the picture below, I slowly decreased the length
+                of one yarn.
+            </p>
+            <div class="row">
+                <img class="column1" src="run2.png">
+            </div>
+        </div>
     </div>
 </body>
 
