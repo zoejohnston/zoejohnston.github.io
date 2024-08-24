@@ -71,13 +71,46 @@
 
 <script src="index.js" type="module"></script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Sedan:ital@0;1&display=swap" rel="stylesheet">
+
 <style>
-    @font-face {
-    font-family: 'gladifiltheftegladifilthefte';
-    src: url('Gladifilthefte-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    }
+    .averia-serif-libre-light {
+  font-family: "Averia Serif Libre", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.averia-serif-libre-regular {
+  font-family: "Averia Serif Libre", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.averia-serif-libre-bold {
+  font-family: "Averia Serif Libre", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.averia-serif-libre-light-italic {
+  font-family: "Averia Serif Libre", serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.averia-serif-libre-regular-italic {
+  font-family: "Averia Serif Libre", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.averia-serif-libre-bold-italic {
+  font-family: "Averia Serif Libre", serif;
+  font-weight: 700;
+  font-style: italic;
+}
     div.overtop {
         position: absolute; 
         left: 0; 
@@ -105,15 +138,17 @@
     div.overtop>h1 {
         text-align: center;
         color:#fc98a4;
-        font-size: 80px;
+        font-size: 95px;
         text-shadow: #fc98a4 1px 0 10px;
-        font-family:'trebuchet ms';
+        font-weight: 300;
+        font-family:'Averia Serif Libre';
     }
     h1 {
         text-align: left;
         color:#fc98a4;
         font-size: 40px;
-        font-family:'trebuchet ms';
+        font-weight: normal;
+        font-family:'Averia Serif Libre';
     }
     div.row {
         padding: 10px;
@@ -232,12 +267,17 @@
                 <img class="column3" src="nosliding.png">
                 <img class="column3" src="sliding.png">
             </div>
-            <p>As I mentioned before, runs are a great example of yarn level movement! To create the picture below, I slowly decreased the length
+            <p>As I mentioned before, runs are a great example of yarn-level movement! To create the picture below, I slowly decreased the length
                 of one yarn.
             </p>
             <div class="row">
                 <img class="column1" src="run2.png">
             </div>
+        </div>
+
+        <div class="project">
+            <h1>Lorem Ipsum</h1>
+            <p>Lorem Ipsum
         </div>
     </div>
 </body>
