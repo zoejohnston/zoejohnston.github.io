@@ -156,10 +156,6 @@
         width: 600px;
         margin-right: 20px;
     }
-    div.project {
-        border-radius: 25px;
-        padding: 5px;
-    }
     h2.column1 {
         text-align: left;
     }
@@ -199,6 +195,14 @@
         display: table;
         clear: both;
     }
+    summary {
+        text-align: left;
+        color:#fc98a4;
+        font-size: 40px;
+        font-weight: normal;
+        font-family:'Averia Serif Libre';
+        margin-bottom: 5px;
+    }
 
 </style>
 
@@ -228,12 +232,13 @@
             <a href="https://github.com/zoejohnston/fabricsim">Source Code↗</a>
             <a href="https://youtu.be/thriwrRsMsA">Video↗</a>
             <p>Some of the properties of fabric, especially knit fabric, come from the sliding of 
-                inidvidual yarns. Runs are an obvious example of yarn-level movement in woven fabric. 
-                One yarn gets caught and is forced to slide past the yarns that it is woven through, 
-                deforming the fabric in a characteristic way. The question behind this project was: "how 
-                can we go about simulating fabric at this level of detail?". I read a few papers on 
-                the subject, and decided to replicate the technique for simulating woven fabric used by Cirio et al. in a 2014 paper.
+                individual yarns. Runs are an obvious example of yarn-level movement in woven fabric: 
+                one yarn gets caught and is forced to slide past the yarns that it is woven through, 
+                deforming the fabric in a characteristic way. 
+                In order to be performant, most 
+                methods for fabric simulation abstract away the yarns. But what if we want to simulate behaviors that emerge from yarn sliding? 
                 <br><br>
+                My simulator is based on a 2014 paper by Cirio et al. which proposes a method for simulating woven fabric at the yarn level.
                 Like many cloth simulation methods, this method uses a particle-based discretization of the farbic.
                 Each yarn crossing is described using a particle with five degrees of freedom. Three degrees of 
                 freedom describe the location of the particle in 3D space and two describe its parametric location
@@ -258,8 +263,13 @@
 
         <div class="project">
             <h1>Funky Mesh Stuff</h1>
-            <p>Getting u guys some pictures brb!
+            <p>Getting u guys some pictures brb!</p>
         </div>
+
+        <details>
+            <summary>Funky Mesh Stuff</summary>
+            <p>Getting u guys some pictures brb!</p>
+        </details>
     </div>
 </body>
 
