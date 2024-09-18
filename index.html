@@ -262,14 +262,28 @@
         </div>
 
         <div class="project">
-            <h1>Funky Mesh Stuff</h1>
-            <p>Getting u guys some pictures brb!</p>
+            <h1>Multiresolution Mesh Deformation</h1>
+            <a href="https://github.com/zoejohnston/multiresmeshdeform">Source Code↗</a>
+            <p>This method of mesh deformation is described in a 1998 paper by Kobbelt et al. called "Interactive multi-resolution modeling on arbitrary meshes".
+                For the example mesh shown below, I've defined some groups of handle vertices and transformations to apply to these handles. They are shown in green, yellow, and blue.
+            </p>
+            <div class="row">
+                <img class="column1" src="images/original_cow.png">
+            </div>
+            <p>First, we apply Laplacian smoothing to get a smooth base surface. We the preserve the surface detail by computing the vectors between the original mesh and the 
+                smoothed mesh. Each vector is computed in the local frame of that vertex in the smoothed mesh. These vectors are shown using black lines in the image below.</p>
+            <div class="row">
+                <img class="column1" src="images/decomposed_cow.png">
+            </div>
+            <p>Next, we deform our original mesh by applying transformations to the handle vertices as desired. As before, we apply Laplacian smoothing to get a smooth surface.</p>
+            <div class="row">
+                <img class="column1" src="images/deformed_cow.png">
+            </div>
+            <p>Finally we add the surface detail back to the deformed and smoothed mesh.</p>
+            <div class="row">
+                <img class="column1" src="images/recomposed_cow.png">
+            </div>
         </div>
-
-        <details>
-            <summary>Funky Mesh Stuff</summary>
-            <p>Getting u guys some pictures brb!</p>
-        </details>
     </div>
 </body>
 
